@@ -127,9 +127,9 @@ int main() {
 
             if (const auto* keyReleased = event->getIf<sf::Event::KeyReleased>()) {
                 
-                // Up key when released triggers decceleration
+                // Up key when released triggers deceleration
                 if (keyReleased->scancode == sf::Keyboard::Scan::Up) {
-                    ship->deccelerate();
+                    ship->decelerate();
                 }
                 // left and right keys when released will stop turning
                 if (keyReleased->scancode == sf::Keyboard::Scan::Left || keyReleased->scancode == sf::Keyboard::Scan::Right ) {

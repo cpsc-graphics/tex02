@@ -43,7 +43,7 @@ public:
 
     // Set the acceleration of the ship to the negative constant value -ACC.
     // This will cause the ship to decelerate in the direction it is currently facing.
-    void deccelerate() {
+    void decelerate() {
         this->a = -1.0f * ACC;
     }
 

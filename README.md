@@ -5,7 +5,7 @@
 
 Our ship has two simple controls: moving forward and turning. Pressing the "UP" key (and keeping it pressed) will make it move in the direction it is facing. Pressing the "RIGHT" or "LEFT" keys (and keeping the key held down) will make it turn right (clockwise) or left (counter-clockwise).
 
-How fast should the ship move and how fast should it turn? Additionally, it is a good idea to provide smooth acceleration and decceleration, otherwise the movement can feel abrupt. Some basic physics will give us the motion that we need. 
+How fast should the ship move and how fast should it turn? Additionally, it is a good idea to provide smooth acceleration and deceleration, otherwise the movement can feel abrupt. Some basic physics will give us the motion that we need. 
 
 1. **Rotation (Turning)**<br>
    Let's tackle rotation first as it is simpler since we are not worrying about rotational acceleration. When turning, we'll keep things simple and have the ship turn at a constant angular speed.
@@ -19,7 +19,7 @@ How fast should the ship move and how fast should it turn? Additionally, it is a
    $\theta \leftarrow \theta + \omega\,dt$
 
 2. **Forward Motion**<br>
-   Let $A$ denote the magnitude of acceleration (decceleration) that the ship experiences when it starts accelerating (deccelerating). Let $a$ be the ship's current acceleration and let $u$ be its velocity. 
+   Let $A$ denote the magnitude of acceleration (deceleration) that the ship experiences when it starts accelerating (decelerating). Let $a$ be the ship's current acceleration and let $u$ be its velocity. 
    
    - Similar to the case of turning (rotation), when the "UP" key is held down we'll set $a := A$, and when it is released, we'll set $a := -A$.
 
@@ -33,7 +33,7 @@ How fast should the ship move and how fast should it turn? Additionally, it is a
    <br>
    $y \leftarrow y + u\, \sin\theta\, dt + \tfrac{1}{2} a\, \sin\theta\, dt^2$
 
-   - We also need to ensure that if the user keeps the "UP" button pressed, the ship does not accelerate beyond a maximum speed $u_\mathsf{max}$. Similarly, when the user releases the "UP" button, we need to ensure that the ship deccelerates to a stop and does not start moving backwards. These conditions can be handled by setting the acceleration to $0$ and capping the maximum speed to $u_\mathsf{max}$.
+   - We also need to ensure that if the user keeps the "UP" button pressed, the ship does not accelerate beyond a maximum speed $u_\mathsf{max}$. Similarly, when the user releases the "UP" button, we need to ensure that the ship decelerates to a stop and does not start moving backwards. These conditions can be handled by setting the acceleration to $0$ and capping the maximum speed to $u_\mathsf{max}$.
 
 ### Update and Drawing
 
