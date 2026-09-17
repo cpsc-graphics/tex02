@@ -40,9 +40,8 @@ void renderingThread(sf::RenderWindow& window, std::atomic<bool>& running, std::
         // determine the elapsed time since the last frame. This will be used to update the ship's position and orientation.
         float dt = clock.restart().asSeconds();
 
-        // draw the ship after updating its position and heading based on the elapsed time.   
-        // TO DO - Your code here.
-        // ...
+        // draw the ship after updating its position and orientation based on the elapsed time.   
+        window.draw( *ship += dt );
         
         // end the current frame
         window.display();
@@ -127,9 +126,9 @@ int main() {
 
             if (const auto* keyReleased = event->getIf<sf::Event::KeyReleased>()) {
                 
-                // Up key when released triggers deceleration
+                // Up key when released triggers decceleration
                 if (keyReleased->scancode == sf::Keyboard::Scan::Up) {
-                    ship->decelerate();
+                    ship->deccelerate();
                 }
                 // left and right keys when released will stop turning
                 if (keyReleased->scancode == sf::Keyboard::Scan::Left || keyReleased->scancode == sf::Keyboard::Scan::Right ) {

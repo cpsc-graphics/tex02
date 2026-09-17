@@ -23,16 +23,17 @@ void Ship::draw(sf::RenderTarget& target, sf::RenderStates states) const {
 
 Ship& Ship::operator+=( float dt ) {
         // update position and angle of the ship based on the current speed, acceleration, and angular speed.
-        // Be careful to convert the angle from degrees to radians when using trigonometric functions.
-        
-        // TO DO - Your code here
-        // ...
-        
+        float rangle = angle * PI / 180.;
+        pos += sf::Vector2f( u * cos(rangle ) * dt + 0.5f * a * cos(rangle) * dt * dt, 
+                             u * sin(rangle ) * dt + 0.5f * a * sin(rangle) * dt * dt );
+        angle += w*dt;
 
-        // update ship's linear velocity based on its curent acceleration.
-        // TO DO - Your code here.  
-        // ...
-        
+        // check for wrap-around of the ship's position
+        // wrapAround(pos);
+
+        // update speed
+        u += a * dt;
+
         // check if we need to stop accelerating
         if ( u > MAX_SPEED || u < 0.0f) {
             a = 0.0f;
@@ -44,15 +45,12 @@ Ship& Ship::operator+=( float dt ) {
             }
         }
 
-        // Based on the ship's position and heading, 
         // set the transformations of the ship in the following order of function calls: 
-        // setPosition, setRotation, setScale (Don't forget about the scale factor). 
-        // This will modify the ship's current transformation matrix, 
-        // which will be used to draw the ship in the correct position and orientation.
-        
-        // TO DO - Your code here.
-        // ...
-        
+        // setPosition, setRotation, setScale.
+        setPosition( pos );
+        setRotation( sf::degrees( angle ) );
+        setScale( sf::Vector2f{ SIZE_SCALE, SIZE_SCALE} );
+ 
         return *this;
     }
 
